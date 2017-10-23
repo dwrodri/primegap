@@ -8,7 +8,7 @@
 int isPrime(unsigned int n){
 
 	int outcome = 1;
-	for(unsigned int i = 2; i < (n/2); i++){ //from 2 to half of n...
+	for(unsigned long long i = 2; i < (n/2); i++){ //from 2 to half of n...
 			if (n % i == 0){
 				outcome--;
 				break;
@@ -23,9 +23,9 @@ int isPrime(unsigned int n){
 * prevPrime : the previous known prime
 * This function finds the next prime 
 */
-unsigned int getNextPrime(int prevPrime){
+unsigned long long  getNextPrime(int prevPrime){
 
-	unsigned int nextPrime = ++prevPrime;
+	unsigned long long nextPrime = ++prevPrime;
 	while(!isPrime(nextPrime))nextPrime++; //search for nextPrime linearly
 	
 	return nextPrime; 
@@ -39,11 +39,12 @@ int main(int argc, char** argv){
 	//assert correct usage
 	if(argc != 2) return 1;
 
-	const unsigned int maxPrimeCount = atoi(argv[1]);
-	unsigned int currentPrime = 7;
-	for(register unsigned int currentPrimeCount = 0; currentPrimeCount < maxPrimeCount; currentPrimeCount++){ 
-		unsigned int temp = getNextPrime(currentPrime); //temporary holding space for next prime to avoid recalculating;
-		printf("%d ", (temp - currentPrime));
+	const unsigned long long maxPrimeCount = atoi(argv[1]);
+	unsigned long long currentPrime = 7;
+	for(register unsigned long long currentPrimeCount = 0; currentPrimeCount < maxPrimeCount; currentPrimeCount++){ 
+		unsigned long long temp = getNextPrime(currentPrime); //temporary holding space for next prime to avoid recalculating;
+		long long unsigned int primeGap = temp - currentPrime; //this is where the "magic" happens
+		printf("%llu ", primeGap);
 		currentPrime = temp;
 	}
 
