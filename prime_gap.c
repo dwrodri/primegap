@@ -51,7 +51,7 @@ int main(int argc, char** argv){
 		unsigned long long temp = getNextPrime(currentPrime); //temporary holding space for next prime to avoid recalculating;
 		unsigned long long primeGap = temp - currentPrime; //this is where the "magic" happens
 
-		printf("%llu\n ", primeGap);
+		printf("%llu ", primeGap);
 		currentPrime = temp;
 	}
 
